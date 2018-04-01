@@ -34,20 +34,20 @@ for j = 1:N % for each time,
         i_y_occ = ceil(myResol * y_occ) + myorigin(2, 1);
         [freex, freey] = bresenham(i_x_ori,i_y_ori,i_x_occ,i_y_occ);  
         myMap(i_y_occ, i_x_occ) = myMap(i_y_occ, i_x_occ) + lo_occ;                   
-        if lo_max > myMap(i_y_occ, i_x_occ)
-                myMap(i_y_occ, i_x_occ) = lo_max;
+        if lo_max< myMap(i_y_occ, i_x_occ)
+            myMap(i_y_occ, i_x_occ) = lo_max;
         end
         if size(freex, 1) ~= 1
             for l = 1:size(freex, 1)
                 myMap(freey(l, 1), freex(l, 1)) = myMap(freey(l, 1), freex(l, 1)) - lo_free;
-                if lo_min < myMap(freey(l, 1), freex(l, 1))
-                    lo_min = myMap(freey(l, 1), freex(l, 1));
+                if lo_min > myMap(freey(l, 1), freex(l, 1))
+                    myMap(freey(l, 1), freex(l, 1)) = lo_min;
                 end
             end
         else
             myMap(freey, freex) = myMap(freey, freex) - lo_free;
-                if lo_min < myMap(freey, freex)
-                    lo_min = myMap(freey, freex);
+                if lo_min > myMap(freey, freex)
+                    myMap(freey, freex) = lo_min;
                 end
         end
     end
@@ -72,8 +72,6 @@ for j = 1:N % for each time,
    
 
 end
-param.lo_max = lo_max;
-param.lo_min = lo_min;
 end
 
 
