@@ -51,10 +51,10 @@ for j = 1:N % for each time,
                 end
         end
     end
-%     figure(1),
-%     imagesc(myMap); hold on;
-%     plot(i_x_ori,i_y_ori,'rx','LineWidth',3); % indicate start point
-%     axis equal;
+    figure(1),
+    imagesc(myMap); hold on;
+    plot(i_x_ori,i_y_ori,'rx','LineWidth',3); % indicate start point
+    axis equal;
   
     % Find grids hit by the rays (in the gird map coordinate)
     
